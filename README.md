@@ -81,9 +81,11 @@ ACT with **LeRobot's default hyperparameters** — these *are* the reproduction 
 | Optimizer | AdamW, lr 1e-5, weight decay 1e-4 |
 | Steps / batch | 100,000 / 8 |
 
-**Compute:** ~4.5 hours on a single A10G. **Training loss:** the L1 action-reconstruction loss fell from ~0.34 → ~0.09 and plateaued; the KL term collapsed toward 0 (expected for a near-deterministic task).
+**Compute:** ~4.5 hours on a single A10G (100k steps). **Training loss:** total loss fell from ~6.9 → ~0.056; the L1 action-reconstruction loss went ~0.68 → ~0.055 and plateaued after ~40k steps; the KL term collapsed toward 0 (expected for a near-deterministic task, so total ≈ L1 by the end).
 
-<!-- CHART: results/training_curve.png — generate with scripts/plot_training.py from the run log -->
+![ACT training loss over 100k steps](results/training_curve.png)
+
+<sub>Log-y view of the same curve: [`results/training_curve_logy.png`](results/training_curve_logy.png) · raw points: [`results/training_metrics.csv`](results/training_metrics.csv)</sub>
 > ⚠️ **Caveat that matters:** training loss correlates only weakly with real task success for these policies
 > ([reference](https://www.roboticscenter.ai/tutorials/lerobot-quickstart)). The **success rate below is the real result** — the loss curve is context, not proof.
 

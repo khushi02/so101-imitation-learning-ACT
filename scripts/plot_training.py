@@ -12,6 +12,10 @@ It scrapes the periodic metric lines, e.g.:
 and writes:
   - results/training_metrics.csv   (always)
   - results/training_curve.png     (if matplotlib is installed: `uv pip install matplotlib`)
+
+The charts embedded in the README were rendered by scripts/plot_metrics.py, which reads the
+already-committed results/training_metrics.csv (no raw log needed). Use THIS script only to
+(re)build that CSV from a fresh `lerobot-train` log.
 """
 import csv
 import re

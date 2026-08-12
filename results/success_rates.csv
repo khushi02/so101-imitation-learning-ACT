@@ -1,21 +1,21 @@
 trial,episode_index,clip_start_position,reached,grasped,placed,notes
-1,0,,,,,
-2,1,,,,,
-3,2,,,,,
-4,3,,,,,
-5,4,,,,,
-6,5,,,,,
-7,6,,,,,
-8,7,,,,,
-9,8,,,,,
-10,9,,,,,
-11,10,,,,,
-12,11,,,,,
-13,12,,,,,
-14,13,,,,,
-15,14,,,,,
-16,15,,,,,
-17,16,,,,,
-18,17,,,,,
-19,18,,,,,
-20,19,,,,,
+1,0,center,1,1,1,
+2,1,top left,1,0,0,attempted to re-grasp
+3,2,bottom left,1,0,0,
+4,3,bottom right,1,0,0,attempted to re-grasp but only reached the center
+5,4,top right,1,0,0,
+6,5,center,1,1,1,clip laying down
+7,6,center,1,1,1,clip upside down
+8,7,top left,1,1,0,laying down; strong re-grasp recovery but no placement
+9,8,bottom left,1,0,0,clip laying down
+10,9,bottom right,1,1,1,clip laying down
+11,10,top right,1,1,1,clip laying down
+12,11,top left,1,1,0,clip upside down
+13,12,bottom left,1,1,1,clip upside down
+14,13,bottom right,1,0,0,upside down; re-grasped
+15,14,top right,1,1,1,clip upside down
+16,15,center,1,1,1,decline angle
+17,16,center,1,0,0,incline angle; re-grasped
+18,17,center,1,1,1,clip sideways
+19,18,center,1,1,1,sideways + laying down
+20,19,center,1,0,0,sideways + upside down

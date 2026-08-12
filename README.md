@@ -1,6 +1,6 @@
 # Reproducing ACT on a low-cost SO-101 arm: clip → bowl
 
-A faithful reproduction of **Action Chunking with Transformers (ACT)** — from the ALOHA paper
+A reproduction of **Action Chunking with Transformers (ACT)** — from the ALOHA paper
 [*Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*](https://www.roboticsproceedings.org/rss19/p016.pdf)
 (Zhao et al., RSS 2023) — on a **single [SO-101](https://huggingface.co/docs/lerobot/so101) arm**, using
 [🤗 LeRobot](https://huggingface.co/docs/lerobot). 50 teleoperated demonstrations, one ACT policy, evaluated
@@ -12,15 +12,13 @@ on a real pick-and-place task: **pick up a hair clip and place it in a bowl.**
 
 ## Result
 
-<!-- RESULT: fill in after evaluation (docs/reproduce.md §5) -->
-
 | Metric | ACT paper (ALOHA) | This reproduction |
 |---|---|---|
 | Task | fine bimanual (e.g. battery insertion) | single-arm clip → bowl |
 | Demonstrations | ~50 | **50** |
-| Success rate | 80–95% | **TBD** _(N = TBD trials)_ |
+| Success rate | 80–95% | **50%** _(10/20 trials)_ |
 
-> **Headline:** _one-sentence result goes here once evaluated, e.g. "X/20 successful placements (X%), within/below the paper's 80–95% band."_
+> **Headline:** 10/20 successful placements (50%) — **below** the paper's 80–95% band. The policy reached the clip on every trial and coped with varied clip orientations, but grasp reliability dropped sharply away from the workspace center (6/8 near center vs 4/12 at the corners).
 
 ## What's being reproduced
 
@@ -91,18 +89,24 @@ ACT with **LeRobot's default hyperparameters** — these *are* the reproduction 
 
 ## Results & failure modes
 
-<!-- RESULT: fill after evaluation -->
-_Success rate over N held-out trials with the clip at varied start positions:_
+_Success rate over 20 trials with the clip at varied start positions and orientations:_
 
 | Outcome | Count | % |
 |---|---|---|
-| Placed in bowl (success) | TBD | TBD |
-| Grasped but missed placement | TBD | TBD |
-| Reached but failed grasp | TBD | TBD |
-| Did not reach | TBD | TBD |
+| Placed in bowl (success) | 10 | 50% |
+| Grasped but missed placement | 2 | 10% |
+| Reached but failed grasp | 8 | 40% |
+| Did not reach | 0 | 0% |
 
 <!-- MEDIA: 1 success GIF + 1 representative failure GIF -->
-_Observations / failure modes:_ _TBD after eval._
+
+**Observations / failure modes:**
+
+- **Reaching is solved; grasping is the bottleneck.** The arm reached the clip on 20/20 trials but failed to close a grasp on 8 (40%). Once grasped, placement was usually clean — 10 of 12 grasps ended in the bowl.
+- **Success falls off toward the workspace edges.** Near the center the policy placed **6/8 (75%)**; across the four corner positions only **4/12 (33%)**, with the top-left corner weakest (0/3). Reaching stayed reliable everywhere — it's the fine grasp that degrades off-center.
+- **Orientation was not the main driver.** Successes span laying-down, upside-down, sideways, and inclined/declined clip poses — as long as the clip was near center. The policy generalized across orientation better than across position.
+- **Re-grasp recovery emerged but rarely converted.** On several missed grasps the policy visibly retried (a nice side effect of action chunking); one top-left retry recovered a solid grasp, but recovery attempts seldom ended in a placement.
+- **Most likely causes of the gap vs 80–95%:** (1) the 50 demonstrations concentrated coverage near the center, leaving edge positions under-represented; (2) two cameras vs the paper's four give weaker depth cues for a precise grasp at the workspace margins. Denser edge demos and/or an overhead view are the obvious next experiments.
 
 ## Reproduce it yourself
 

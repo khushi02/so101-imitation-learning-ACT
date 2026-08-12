@@ -64,19 +64,29 @@ See [notes.md](notes.md) for the auto-resume loop and why `--save_checkpoint_to_
 
 ## 5. Evaluate on the robot
 
-Autonomous rollout with the trained policy (same physical setup as recording):
+Autonomous rollout with the trained policy (same physical setup as recording). No leader arm is needed —
+`episodic` runs `num_episodes` attempts and holds the follower still during each reset window so you can
+reposition the clip. Recorded to a **separate** dataset (never the training repo):
 
 ```bash
 lerobot-rollout \
-  --strategy.type=base \
   --policy.path=khushiiw/act-clip-bowl \
+  --strategy.type=episodic \
   --robot.type=so101_follower --robot.port=<FOLLOWER_PORT> --robot.id=my_follower \
   --robot.cameras="{ wrist: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}, front: {type: opencv, index_or_path: 1, width: 640, height: 480, fps: 30} }" \
-  --task="Pick up the clip and place it in the bowl" \
-  --duration=30 \
+  --dataset.repo_id=khushiiw/so101-clip-bowl-eval \
+  --dataset.single_task="Pick up the clip and place it in the bowl" \
+  --dataset.num_episodes=20 \
+  --dataset.episode_time_s=30 \
+  --dataset.reset_time_s=15 \
+  --dataset.push_to_hub=false \
   --display_data=true
 ```
-Score **success = clip ends up in the bowl** over ~15–20 trials with the clip at varied positions; log outcomes into [`../results/success_rates.csv`](../results/success_rates.csv).
+Score **success = clip ends up in the bowl** over ~15–20 trials with the clip at varied positions; log outcomes
+into [`../results/success_rates.csv`](../results/success_rates.csv) during each reset window.
+
+For a quick, non-recording sanity check (no dataset), use the `base` strategy instead:
+`--strategy.type=base --task="Pick up the clip and place it in the bowl" --duration=30` (drop all `--dataset.*`).
 
 ## Media (for the README visuals)
 

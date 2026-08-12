@@ -116,7 +116,8 @@ Full, copy-pasteable commands (setup → calibrate → record → train → eval
 
 ## Links
 
-- 📦 Dataset: [`khushiiw/so101-clip-bowl`](https://huggingface.co/datasets/khushiiw/so101-clip-bowl)
+- 📦 Training dataset: [`khushiiw/so101-clip-bowl`](https://huggingface.co/datasets/khushiiw/so101-clip-bowl)
+- 🎬 Eval rollouts (20 episodes, both cameras): [`khushiiw/rollout_clip_bowl_20260812_114628`](https://huggingface.co/datasets/khushiiw/rollout_clip_bowl_20260812_114628)
 - 🧠 Policy: [`khushiiw/act-clip-bowl`](https://huggingface.co/khushiiw/act-clip-bowl)
 - 📄 ACT paper: [Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware](https://www.roboticsproceedings.org/rss19/p016.pdf)
 - 🤗 LeRobot: [docs](https://huggingface.co/docs/lerobot) · SO-101 [assembly](https://huggingface.co/docs/lerobot/so101) · [imitation-learning tutorial](https://huggingface.co/docs/lerobot/il_robots)

@@ -1,7 +1,7 @@
 # Results
 
 - **`success_rates.csv`** — one row per evaluation trial: `episode_index` cross-references the recorded
-  `khushiiw/rollout_clip_bowl` rollout dataset; score `reached` / `grasped` / `placed` as 1/0 during each
+  [`khushiiw/rollout_clip_bowl_20260812_114628`](https://huggingface.co/datasets/khushiiw/rollout_clip_bowl_20260812_114628) rollout dataset; score `reached` / `grasped` / `placed` as 1/0 during each
   reset window. The aggregate goes into the top-level README's results table.
 - **`training_curve.png` / `training_curve_logy.png`** — rendered by `scripts/plot_metrics.py` from
   `training_metrics.csv` (run `python scripts/plot_metrics.py` to rebuild them).

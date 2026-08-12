@@ -83,7 +83,8 @@ lerobot-rollout \
   --display_data=true
 ```
 > Rollout-recording datasets **must** be named `<user>/rollout_<name>` — the recorder rejects any other prefix
-> (that's why it's `rollout_clip_bowl`, not `clip-bowl-eval`).
+> (that's why it's `rollout_clip_bowl`, not `clip-bowl-eval`). LeRobot then appends a timestamp on the Hub, so
+> the published repo is [`rollout_clip_bowl_20260812_114628`](https://huggingface.co/datasets/khushiiw/rollout_clip_bowl_20260812_114628) (same behavior as the training dataset).
 
 Score **success = clip ends up in the bowl** over ~15–20 trials with the clip at varied positions; log outcomes
 into [`../results/success_rates.csv`](../results/success_rates.csv) during each reset window.

@@ -74,7 +74,7 @@ lerobot-rollout \
   --strategy.type=episodic \
   --robot.type=so101_follower --robot.port=<FOLLOWER_PORT> --robot.id=my_follower \
   --robot.cameras="{ wrist: {type: opencv, index_or_path: 0, width: 640, height: 480, fps: 30}, front: {type: opencv, index_or_path: 1, width: 640, height: 480, fps: 30} }" \
-  --dataset.repo_id=khushiiw/so101-clip-bowl-eval \
+  --dataset.repo_id=khushiiw/rollout_clip_bowl \
   --dataset.single_task="Pick up the clip and place it in the bowl" \
   --dataset.num_episodes=20 \
   --dataset.episode_time_s=30 \
@@ -82,6 +82,9 @@ lerobot-rollout \
   --dataset.push_to_hub=false \
   --display_data=true
 ```
+> Rollout-recording datasets **must** be named `<user>/rollout_<name>` — the recorder rejects any other prefix
+> (that's why it's `rollout_clip_bowl`, not `clip-bowl-eval`).
+
 Score **success = clip ends up in the bowl** over ~15–20 trials with the clip at varied positions; log outcomes
 into [`../results/success_rates.csv`](../results/success_rates.csv) during each reset window.
 

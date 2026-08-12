@@ -6,9 +6,9 @@ A reproduction of **Action Chunking with Transformers (ACT)** — from the ALOHA
 [🤗 LeRobot](https://huggingface.co/docs/lerobot). 50 teleoperated demonstrations, one ACT policy, evaluated
 on a real pick-and-place task: **pick up a hair clip and place it in a bowl.**
 
-<!-- HERO MEDIA: replace with a GIF of the trained policy doing the task (see docs/reproduce.md §Media) -->
-<!-- ![The trained policy picking up the clip and dropping it in the bowl](results/media/rollout.gif) -->
-> 🎥 _Hero GIF of the autonomous policy goes here._
+![The ACT policy autonomously picking up the clip and placing it in the bowl](results/media/rollout.gif)
+
+<sub>Autonomous rollout (front camera, ~2× speed) — episode 15 of the public [eval dataset](https://huggingface.co/datasets/khushiiw/rollout_clip_bowl_20260812_114628).</sub>
 
 ## Result
 
@@ -98,7 +98,9 @@ _Success rate over 20 trials with the clip at varied start positions and orienta
 | Reached but failed grasp | 8 | 40% |
 | Did not reach | 0 | 0% |
 
-<!-- MEDIA: 1 success GIF + 1 representative failure GIF -->
+![Failure case: the policy re-grasps an inclined clip several times but never secures it](results/media/failure.gif)
+
+<sub>A representative failure (episode 16, ~4× speed): the clip is inclined; the policy reaches and makes several visible re-grasp attempts — the repeated open/close — but never secures it, so nothing is placed. Contrast with the successful placement in the hero GIF above.</sub>
 
 **Observations / failure modes:**
 

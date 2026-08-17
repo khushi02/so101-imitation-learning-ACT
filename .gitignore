@@ -1,0 +1,19 @@
+# Training outputs & checkpoints (large; live on the HF Hub instead)
+outputs/
+checkpoints/
+*.safetensors
+wandb/
+
+# Datasets are cached here by LeRobot and pushed to the HF Hub — don't commit
+# ~/.cache/huggingface/lerobot/  (outside repo, listed as a reminder)
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

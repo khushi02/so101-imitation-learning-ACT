@@ -1,9 +1,6 @@
-# Reproduce this
+# Reproduce the experiment
 
-Exact commands used, in order. Generic arm assembly/wiring follows the official
-[SO-101](https://huggingface.co/docs/lerobot/so101) and [imitation-learning](https://huggingface.co/docs/lerobot/il_robots)
-guides and isn't repeated here — this documents the choices specific to *this* reproduction. Replace `<...>` and
-`khushiiw/...` with your own ports and Hub username.
+Exact commands used, in order. This documents the choices specific to *this* reproduction; it does not repeat the general setup instructions included in the [SO-101](https://huggingface.co/docs/lerobot/so101) and [imitation-learning](https://huggingface.co/docs/lerobot/il_robots) guides. Replace `<...>` and `khushiiw/...` with your own ports and Hub username.
 
 Every command assumes the env is active:
 
